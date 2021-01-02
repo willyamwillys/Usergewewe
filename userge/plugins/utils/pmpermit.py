@@ -283,7 +283,7 @@ async def uninvitedPmHandler(message: Message):
             await message.reply(
                 noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by WillyamWillys`')
         await asyncio.sleep(1)
-        await CHANNEL.log(f"#NEW_MESSAGE\n{user_dict['mention']} telah mengirim lu pesan")
+        await CHANNEL.log(f"#Pesan_Baru\n{user_dict['mention']} telah mengirim lu pesan")
 
 
 @userge.on_filters(~allowAllFilter & filters.outgoing & ~filters.edited
@@ -297,7 +297,7 @@ async def outgoing_auto_approve(message: Message):
     await ALLOWED_COLLECTION.update_one(
         {'_id': userID}, {"$set": {'status': 'allowed'}}, upsert=True)
     user_dict = await userge.get_user_dict(userID)
-    await CHANNEL.log(f"**#AUTO_APPROVED**\n{user_dict['mention']}")
+    await CHANNEL.log(f"**#Izinkan_Otomatis**\n{user_dict['mention']}")
 
 if userge.has_bot:
     @userge.bot.on_callback_query(filters.regex(pattern=r"pm_allow\((.+?)\)"))
