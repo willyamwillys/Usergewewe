@@ -70,8 +70,8 @@ async def handle_afk_incomming(message: Message) -> None:
     if user_id in USERS:
         if not (USERS[user_id][0] + USERS[user_id][1]) % randint(2, 4):
             if REASON:
-                out_str = (f"gua lagi **AFK** ngab.\nAlasan: <code>{REASON}</code>\n"
-                           f"terakhir nongol: `{afk_time} ago`")
+                out_str = (f"gua lagi **AFK** ngab.\nAlasan : <code>{REASON}</code>\n"
+                           f"terakhir nongol : `{afk_time} ago`")
             else:
                 out_str = choice(AFK_REASONS)
             coro_list.append(message.reply(out_str))
@@ -81,8 +81,8 @@ async def handle_afk_incomming(message: Message) -> None:
             USERS[user_id][1] += 1
     else:
         if REASON:
-            out_str = (f"gua lagi **AFK** saat ini.\nAlasan: <code>{REASON}</code>\n"
-                       f"terakhir nongol: `{afk_time} ago`")
+            out_str = (f"gua lagi **AFK** saat ini.\nAlasan : <code>{REASON}</code>\n"
+                       f"terakhir nongol : `{afk_time} ago`")
         else:
             out_str = choice(AFK_REASONS)
         coro_list.append(message.reply(out_str))
