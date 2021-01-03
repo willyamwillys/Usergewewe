@@ -23,9 +23,15 @@ ALLOWED_COLLECTION = get_collection("PM_PERMIT")
 pmCounter: Dict[int, int] = {}
 _IS_INLINE = True
 allowAllFilter = filters.create(lambda _, __, ___: Config.ALLOW_ALL_PMS)
-noPmMessage = bk_noPmMessage = ("Hai Ngab {flname} ({uname}) Ini adalah pesan otomatis gua\n"
-                                "Tunggu sampai lu di Approve atau gua balas\n "
-                                "Jadi jangan **SPAM** gua ngab\n ")
+noPmMessage = bk_noPmMessage = ("**-ID**\n"
+                                "Hai Ngab 😁 {flname} ({uname}). Ini adalah pesan otomatis gua.\n"
+                                "Tunggu sampai lu di Approve atau gua balas.\n "
+                                "Jadi jangan **SPAM** gua ngab.\n"
+                               "\n"
+                                "**-EN**\n"
+                               "Hello 😁 {flname} ({uname}). this is an automated message\n"
+                               "Please wait until you get approved to direct message\n "
+                               "And please dont **SPAM** until then\n "))
 blocked_message = bk_blocked_message = "**Lu bakal otomatis ke blok**"
 
 
@@ -278,10 +284,10 @@ async def uninvitedPmHandler(message: Message):
                 )
             except BotInlineDisabled:
                 await message.reply(
-                    noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by WillyamWillys`')
+                    noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by **WillyamWillys**`')
         else:
             await message.reply(
-                noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by WillyamWillys`')
+                noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by **WillyamWillys**`')
         await asyncio.sleep(1)
         await CHANNEL.log(f"#Pesan_Baru\n{user_dict['mention']} telah mengirim lu pesan")
 
@@ -369,7 +375,7 @@ if userge.has_bot:
         else:
             user_dict = await userge.get_user_dict(c_q.from_user.id)
             await c_q.edit_message_text(
-                noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by WillyamWillys`')
+                noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by **WillyamWillys**`')
             buttons = InlineKeyboardMarkup(
                 [
                     [
