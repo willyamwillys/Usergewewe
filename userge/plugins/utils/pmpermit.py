@@ -31,7 +31,7 @@ noPmMessage = bk_noPmMessage = ("**-ID**\n"
                                 "**-EN**\n"
                                "Hello 😁 {flname} ({uname}). this is an automated message\n"
                                "Please wait until you get approved to direct message\n "
-                               "And please dont **SPAM** until then\n "))
+                               "And please dont **SPAM** until then\n ")
 blocked_message = bk_blocked_message = "**-ID**\n**Lu bakal otomatis ke blok**\n\n**-EN**\n**You were automatically blocked**""
 
 
