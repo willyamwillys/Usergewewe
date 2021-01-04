@@ -40,7 +40,7 @@ async def _init() -> None:
 @userge.on_cmd("afk", about={
     'header': "Pengaturan mode AFK",
     'description': "Set status lu menjadi AFK. Respon ke orang yg tags/PM's.\n"
-                   "kasihh tau kalau lu AFK. Mematikan mode AFK cukup chat sembarang aja ke orang ngab.",
+                   "kasih tau kalau lu AFK. Mematikan mode AFK cukup chat sembarang aja ke orang ngab.",
     'usage': "{tr}afk or {tr}afk [alasan]"}, allow_channels=False)
 async def active_afk(message: Message) -> None:
     """ hidup matikan mode afk """
@@ -71,7 +71,7 @@ async def handle_afk_incomming(message: Message) -> None:
         if not (USERS[user_id][0] + USERS[user_id][1]) % randint(2, 4):
             if REASON:
                 out_str = (f"gua lagi **AFK** ngab.\nAlasan : <code>{REASON}</code>\n"
-                           f"terakhir nongol : `{afk_time} ago`")
+                           f"terakhir nongol : `{afk_time} yang lalu`")
             else:
                 out_str = choice(AFK_REASONS)
             coro_list.append(message.reply(out_str))
@@ -82,7 +82,7 @@ async def handle_afk_incomming(message: Message) -> None:
     else:
         if REASON:
             out_str = (f"gua lagi **AFK** saat ini.\nAlasan : <code>{REASON}</code>\n"
-                       f"terakhir nongol : `{afk_time} ago`")
+                       f"terakhir nongol : `{afk_time} yang lalu`")
         else:
             out_str = choice(AFK_REASONS)
         coro_list.append(message.reply(out_str))
@@ -131,7 +131,7 @@ async def handle_afk_outgoing(message: Message) -> None:
                 g_count += gcount
         coro_list.append(replied.edit(
             f"`lu nerima {p_count + g_count} pesan ketika AFK. "
-            f"cek log detail ngab.`\n\n**AFK time** : __{afk_time}__", del_in=3))
+            f"cek log detail ngab.`\n\n**AFK time** : __{afk_time}__", del_in=10))
         out_str = f"lu nerima **{p_count + g_count}** pesan " + \
             f"dari **{len(USERS)}** user ketika lu AFK!\n\n**AFK time** : __{afk_time}__\n"
         if p_count:
