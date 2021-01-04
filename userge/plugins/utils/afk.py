@@ -131,9 +131,9 @@ async def handle_afk_outgoing(message: Message) -> None:
                 g_count += gcount
         coro_list.append(replied.edit(
             f"`lu nerima {p_count + g_count} pesan ketika AFK. "
-            f"cek log detail ngab.`\n\n**AFK time** : __{afk_time}__", del_in=10))
+            f"cek log detail ngab.`\n\n**waktu AFK** : __{afk_time}__", del_in=10))
         out_str = f"lu nerima **{p_count + g_count}** pesan " + \
-            f"dari **{len(USERS)}** user ketika lu AFK!\n\n**AFK time** : __{afk_time}__\n"
+            f"dari **{len(USERS)}** user ketika lu AFK!\n\n**waktu AFK** : __{afk_time}__\n"
         if p_count:
             out_str += f"\n**{p_count} Pesan Pribadi:**\n\n{p_msg}"
         if g_count:
