@@ -32,7 +32,7 @@ noPmMessage = bk_noPmMessage = ("**-ID**\n"
                                "Hello 😁 {flname} ({uname}). this is an automated message\n"
                                "Please wait until you get approved to direct message\n "
                                "And please dont **SPAM** until then\n ")
-blocked_message = bk_blocked_message = "**-ID**\n**Lu bakal otomatis ke blok**\n\n**-EN**\n**You were automatically blocked**"
+blocked_message = bk_blocked_message = "**-ID**\n**Lu otomatis ke blok**\n\n**-EN**\n**You were automatically blocked**"
 
 
 async def _init() -> None:
@@ -75,7 +75,7 @@ async def allow(message: Message):
             await message.edit("`di izinkan mengirim pesan`", del_in=3)
     else:
         await message.edit(
-            "I need to reply to a user or provide the username/id or be in a private chat",
+            "gua perlu lu chat orang di private chat",
             del_in=3)
 
 
@@ -95,10 +95,10 @@ async def denyToPm(message: Message):
         if a.deleted_count:
             await message.edit("`dilarang mengirim pesan`", del_in=3)
         else:
-            await message.edit("`tidak ada yg berubah`", del_in=3)
+            await message.edit("`ga ada yg berubah`", del_in=3)
     else:
         await message.edit(
-            "I need to reply to a user or provide the username/id or be in a private chat",
+            "gua perlu lu chat orang di private chat",
             del_in=3)
 
 
@@ -237,7 +237,7 @@ async def set_custom_blockpm_message(message: Message):
     allow_channels=False)
 async def view_current_noPM_msg(message: Message):
     """ view current pm message """
-    await message.edit(f"--current PM message--\n\n{noPmMessage}")
+    await message.edit(f"--pesan PM saat ini--\n\n{noPmMessage}")
 
 
 @userge.on_cmd(
@@ -246,7 +246,7 @@ async def view_current_noPM_msg(message: Message):
     allow_channels=False)
 async def view_current_blockPM_msg(message: Message):
     """ view current block pm message """
-    await message.edit(f"--current blockPM message--\n\n{blocked_message}")
+    await message.edit(f"--pesan PM Blokir saat ini--\n\n{blocked_message}")
 
 
 @userge.on_filters(~allowAllFilter & filters.incoming & filters.private & ~filters.bot
@@ -271,7 +271,7 @@ async def uninvitedPmHandler(message: Message):
             pmCounter[message.from_user.id] += 1
             await message.reply(
                 f"lu ada {pmCounter[message.from_user.id]} dari 4 **Peringatan**\n"
-                "tunggu sampe lu di approve ngab !", del_in=5)
+                "tunggu sampe lu di izinkan ngab !", del_in=10)
     else:
         pmCounter.update({message.from_user.id: 1})
         if userge.has_bot and _IS_INLINE:
