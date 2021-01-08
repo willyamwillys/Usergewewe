@@ -153,7 +153,7 @@ async def ipmguard(message: Message):
         await message.edit("`Inline PM_guard activated`", del_in=3, log=__name__)
     else:
         _IS_INLINE = True
-        await message.edit("`Inline PM_guard activateddeactivated`", del_in=3, log=__name__)
+        await message.edit("`Inline PM_guard deactivated`", del_in=3, log=__name__)
     await SAVED_SETTINGS.update_one(
         {'_id': 'INLINE_PM_PERMIT'}, {"$set": {'data': _IS_INLINE}}, upsert=True)
 
