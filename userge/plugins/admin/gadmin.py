@@ -136,7 +136,8 @@ async def ban_user(message: Message):
             text="`no valid user_id or message specified,`"
             "`do .help ban for more info`", del_in=5)
         return
-        chat_id = message.chat.id
+
+    chat_id = message.chat.id
     flags = message.flags
     minutes = int(flags.get('-m', 0))
     hours = int(flags.get('-h', 0))
@@ -153,6 +154,7 @@ async def ban_user(message: Message):
     elif days:
         ban_period = time.time() + days * 86400
         _time = f"{days}d"
+
     try:
         get_mem = await message.client.get_chat_member(chat_id, user_id)
         await message.client.kick_chat_member(chat_id, user_id, int(ban_period))
@@ -275,13 +277,13 @@ async def mute_usr(message: Message):
         return
     if minutes:
         mute_period = int(minutes) * 60
-            _time = f"{int(minutes)}m"
+        _time = f"{int(minutes)}m"
     elif hours:
         mute_period = int(hours) * 3600
-    	        _time = f"{int(hours)}h"
+        _time = f"{int(hours)}h"
     elif days:
         mute_period = int(days) * 86400
-            _time = f"{int(days)}d"
+        _time = f"{int(days)}d"
     if flags:
         try:
             get_mem = await message.client.get_chat_member(chat_id, user_id)
